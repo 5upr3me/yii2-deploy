@@ -20,7 +20,7 @@ sh -c "rsync $SWITCHES -e '$RSH' $LOCAL_PATH $DSN:$INPUT_REMOTE_PATH"
 # ssh -i /root/.ssh/id_rsa -t $INPUT_REMOTE_USER@$INPUT_REMOTE_HOST "sudo chmod 775 -R $INPUT_REMOTE_PATH/web"
 # ssh -i /root/.ssh/id_rsa -t $INPUT_REMOTE_USER@$INPUT_REMOTE_HOST "sudo chmod 777 -R $INPUT_REMOTE_PATH/runtime"
 # ssh -i /root/.ssh/id_rsa -t $INPUT_REMOTE_USER@$INPUT_REMOTE_HOST "sudo chmod 777 -R $INPUT_REMOTE_PATH/web/assets"
-sh -c "ssh -i /root/.ssh/id_rsa -t $INPUT_REMOTE_USER@$INPUT_REMOTE_HOST "sudo touch  $INPUT_REMOTE_PATH/test" "
+sh -c "ssh -t $INPUT_REMOTE_USER@$INPUT_REMOTE_HOST touch  $INPUT_REMOTE_PATH/test "
 
 echo $'\n' "------ CONGRATS! DEPLOY SUCCESSFUL!!! ---------" $'\n'
 exit 0
