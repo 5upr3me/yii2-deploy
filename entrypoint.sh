@@ -16,10 +16,10 @@ DSN="$INPUT_REMOTE_USER@$INPUT_REMOTE_HOST"
 # Deploy.
 sh -c "rsync $SWITCHES -e '$RSH' $LOCAL_PATH $DSN:$INPUT_REMOTE_PATH"
 
-ssh  -t $INPUT_REMOTE_USER@$INPUT_REMOTE_HOST composer -v
-sh -c "ssh  -t $INPUT_REMOTE_USER@$INPUT_REMOTE_HOST cd $INPUT_REMOTE_PATH && /usr/local/bin/composer update --no-progress --no-interaction"
+
+ssh  -t $INPUT_REMOTE_USER@$INPUT_REMOTE_HOST cd $INPUT_REMOTE_PATH && composer update --no-progress --no-interaction"
 echo $'\n' "------ COMPOSER UPDATE ---------" $'\n'
-sh -c "ssh  -t $INPUT_REMOTE_USER@$INPUT_REMOTE_HOST cd $INPUT_REMOTE_PATH && php yii migrate"
+ssh  -t $INPUT_REMOTE_USER@$INPUT_REMOTE_HOST cd $INPUT_REMOTE_PATH && php yii migrate
 echo $'\n' "------ MIGRATION APPLIED  ---------" $'\n'
 sh -c "ssh  -t $INPUT_REMOTE_USER@$INPUT_REMOTE_HOST chown -R www-data:www-data $INPUT_REMOTE_PATH"
 sh -c "ssh  -t $INPUT_REMOTE_USER@$INPUT_REMOTE_HOST chmod 775 -R $INPUT_REMOTE_PATH/web"
