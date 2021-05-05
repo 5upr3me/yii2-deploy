@@ -16,10 +16,10 @@ DSN="$INPUT_REMOTE_USER@$INPUT_REMOTE_HOST"
 # Deploy.
 sh -c "rsync $SWITCHES -e '$RSH' $LOCAL_PATH $DSN:$INPUT_REMOTE_PATH"
 
-ssh -i /root/.ssh/id_rsa -t $1@$2 "sudo chown -R $4:$4 $3"
-ssh -i /root/.ssh/id_rsa -t $1@$2 "sudo chmod 775 -R $3/web"
-ssh -i /root/.ssh/id_rsa -t $1@$2 "sudo chmod 777 -R $3/runtime"
-ssh -i /root/.ssh/id_rsa -t $1@$2 "sudo chmod 777 -R $3/web/assets"
+ssh -i /root/.ssh/id_rsa -t $INPUT_REMOTE_USER1@$INPUT_REMOTE_HOST "sudo chown -R www-data:www-data $INPUT_REMOTE_PATH"
+ssh -i /root/.ssh/id_rsa -t $INPUT_REMOTE_USER1@$INPUT_REMOTE_HOST "sudo chmod 775 -R $INPUT_REMOTE_PATH/web"
+ssh -i /root/.ssh/id_rsa -t $INPUT_REMOTE_USER1@$INPUT_REMOTE_HOST "sudo chmod 777 -R $INPUT_REMOTE_PATH/runtime"
+ssh -i /root/.ssh/id_rsa -t $INPUT_REMOTE_USER1@$INPUT_REMOTE_HOST "sudo chmod 777 -R $INPUT_REMOTE_PATH/web/assets"
 
 echo $'\n' "------ CONGRATS! DEPLOY SUCCESSFUL!!! ---------" $'\n'
 exit 0
