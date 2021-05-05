@@ -20,9 +20,8 @@ ssh  -t $INPUT_REMOTE_USER@$INPUT_REMOTE_HOST "cd $INPUT_REMOTE_PATH; composer i
 
 ssh  -t $INPUT_REMOTE_USER@$INPUT_REMOTE_HOST "cd $INPUT_REMOTE_PATH; php yii migrate"
 sh -c "ssh  -t $INPUT_REMOTE_USER@$INPUT_REMOTE_HOST chown -R www-data:www-data $INPUT_REMOTE_PATH"
-sh -c "ssh  -t $INPUT_REMOTE_USER@$INPUT_REMOTE_HOST chmod 775 -R $INPUT_REMOTE_PATH/web"
-sh -c "ssh  -t $INPUT_REMOTE_USER@$INPUT_REMOTE_HOST chmod 777 -R $INPUT_REMOTE_PATH/runtime"
-sh -c "ssh  -t $INPUT_REMOTE_USER@$INPUT_REMOTE_HOST chmod 777 -R $INPUT_REMOTE_PATH/web/assets"
+sh -c "ssh  -t $INPUT_REMOTE_USER@$INPUT_REMOTE_HOST chmod 775 -R $INPUT_REMOTE_PATH"
+
 
 
 echo $'\n' "------ CONGRATS! DEPLOY SUCCESSFUL!!! ---------" $'\n'
