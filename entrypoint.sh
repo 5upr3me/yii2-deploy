@@ -20,7 +20,7 @@ ssh -p $INPUT_REMOTE_PORT  -t $INPUT_REMOTE_USER@$INPUT_REMOTE_HOST "cd $INPUT_R
 ssh -p $INPUT_REMOTE_PORT  -t $INPUT_REMOTE_USER@$INPUT_REMOTE_HOST "cd $INPUT_REMOTE_PATH; composer update --prefer-dist --no-interaction --no-progress --optimize-autoloader --ansi"
 
 ssh  -p $INPUT_REMOTE_PORT -t $INPUT_REMOTE_USER@$INPUT_REMOTE_HOST "cd $INPUT_REMOTE_PATH; php yii migrate  --interactive=0"
-ssh  -p $INPUT_REMOTE_PORT -t $INPUT_REMOTE_USER@$INPUT_REMOTE_HOST "cd $INPUT_REMOTE_PATH; php yii --migrationPath=@yii/rbac/migrations/ --interactive=0"
+ssh  -p $INPUT_REMOTE_PORT -t $INPUT_REMOTE_USER@$INPUT_REMOTE_HOST "cd $INPUT_REMOTE_PATH; php yii migrate --migrationPath=@yii/rbac/migrations/ --interactive=0"
 
 ssh  -p $INPUT_REMOTE_PORT -t $INPUT_REMOTE_USER@$INPUT_REMOTE_HOST "cd $INPUT_REMOTE_PATH; php yii rbac-start/init"
 
